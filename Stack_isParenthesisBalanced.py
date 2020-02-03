@@ -4,9 +4,9 @@ from CreatingStack import Stack
 def is_match(top,paren):
     if top=='{' and paren=='}':
         return True
-    if top=='[' and paren==']':
+    elif top=='[' and paren==']':
         return True
-    if top=='(' and paren==')':
+    elif top=='(' and paren==')':
         return True
     else:
         return False
