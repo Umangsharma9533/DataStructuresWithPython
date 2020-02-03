@@ -1,7 +1,15 @@
+#Creating a New Node
 class Node:
     def __init__(self,data):
         self.data=data
         self.next=None
+#Creating a Linkedlist
+#Class contain 5 Functions:
+#__init__(): It acts a constructor , initialize a head for a linkedlist
+# print_linkedlist() : Print the complete linkedlist
+# prepend() : appending a node in front of a linked list head
+# insertAfterNode() : Insert a node after particular node
+# append() : will append a node at lasy of the linkedlist
 class LinkedList:
     def __init__(self):
         self.head=None
@@ -35,6 +43,7 @@ class LinkedList:
         while last_node.next:
             last_node=last_node.next
         last_node.next=new_node
+#Creating a object of a linkedlist class
 llist=LinkedList()
 llist.append("A")
 llist.append("B")
