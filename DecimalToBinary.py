@@ -1,3 +1,4 @@
+from CreatingStack import Stack
 def div_by_2(dec_num):
     s=Stack()
     while dec_num>0:
