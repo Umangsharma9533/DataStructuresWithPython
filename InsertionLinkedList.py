@@ -43,6 +43,12 @@ class LinkedList:
         while last_node.next:
             last_node=last_node.next
         last_node.next=new_node
+    def del_headNode(self,key):
+        curr_node=self.head
+        if curr_node and curr_node.data==key:
+            self.head=curr_node.next
+            curr_node.next=None
+            return
 #Creating a object of a linkedlist class
 llist=LinkedList()
 llist.append("A")
