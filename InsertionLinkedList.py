@@ -90,13 +90,44 @@ class LinkedList:
         if node is None:
             return 0
         return 1+self.length_llist_recursive(node.next) 
+def mergeTwoSortedLinkedLists(self,llist):
+        p=self.head
+        q=llist.head
+        if not p:
+            return q
+        if not q:
+            return p
+        if self.head.data > llist.head.data:
+            s=llist.head
+            start=s
+        else:
+            s=self.head
+            start=s
+        while p and q:
+            if p.data <= q.data:
+                s.next=p
+                p=p.next
+            else:
+                s.next=q
+                q=q.next
+        if not p:
+            s.next=q
+        if not q:
+            s.next=p
+        return start    
 #Creating a object of a linkedlist class
-llist=LinkedList()
-llist.append("A")
-llist.append("B")
-llist.append("C")
-llist.append("D")
-llist.append("E")
-llist.prepend("O")
-llist.insertAfterNode("M",llist.head.next)
-llist.print_linkedlist()#Creating a New Node
+llist1=LinkedList()
+llist2=LinkedList()
+llist1.append(1)
+llist1.append(5)
+llist1.append(7)
+llist1.append(9)
+llist1.append(10)
+llist2.append(2)
+llist2.append(3)
+llist2.append(4)
+llist2.append(6)
+llist2.append(8)
+llist1.print_linkedlist()#Creating a New Node
+llist2.print_linkedlist()#Creating a New Node
+llist1.mergeTwoSortedLinkedLists(llist2)
