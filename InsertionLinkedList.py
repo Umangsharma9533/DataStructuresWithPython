@@ -93,41 +93,48 @@ class LinkedList:
 def mergeTwoSortedLinkedLists(self,llist):
         p=self.head
         q=llist.head
+        s=None
+        start=None
         if not p:
             return q
         if not q:
             return p
-        if self.head.data > llist.head.data:
-            s=llist.head
+        if p.data > q.data:
+            s=q
+            q=s.next
             start=s
         else:
-            s=self.head
+            s=p
+            p=s.next
             start=s
         while p and q:
-            if p.data <= q.data:
+            if p.data < q.data:
                 s.next=p
-                p=p.next
+                s=p
+                p=s.next
             else:
                 s.next=q
-                q=q.next
+                s=q
+                q=s.next
         if not p:
             s.next=q
         if not q:
             s.next=p
         return start    
 #Creating a object of a linkedlist class
-llist1=LinkedList()
-llist2=LinkedList()
-llist1.append(1)
-llist1.append(5)
-llist1.append(7)
-llist1.append(9)
-llist1.append(10)
-llist2.append(2)
-llist2.append(3)
-llist2.append(4)
-llist2.append(6)
-llist2.append(8)
-llist1.print_linkedlist()#Creating a New Node
-llist2.print_linkedlist()#Creating a New Node
-llist1.mergeTwoSortedLinkedLists(llist2)
+#Demo use of function in LinkedList class
+#llist1=LinkedList()
+#llist2=LinkedList()
+#llist1.append(1)
+#llist1.append(5)
+#llist1.append(7)
+#llist1.append(9)
+#llist1.append(10)
+#llist2.append(2)
+#llist2.append(3)
+#llist2.append(4)
+#llist2.append(6)
+#llist2.append(8)
+#llist1.print_linkedlist()#Creating a New Node
+#llist2.print_linkedlist()#Creating a New Node
+#llist1.mergeTwoSortedLinkedLists(llist2)
