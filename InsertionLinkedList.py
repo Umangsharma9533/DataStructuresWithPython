@@ -90,7 +90,7 @@ class LinkedList:
         if node is None:
             return 0
         return 1+self.length_llist_recursive(node.next) 
-def mergeTwoSortedLinkedLists(self,llist):
+    def mergeTwoSortedLinkedLists(self,llist):
         p=self.head
         q=llist.head
         s=None
@@ -120,7 +120,19 @@ def mergeTwoSortedLinkedLists(self,llist):
             s.next=q
         if not q:
             s.next=p
-        return start    
+        return start
+   def removeDuplicateNodeInList(self):
+        curr=self.head
+        prev=None
+        dict_values=dict()
+        while curr:
+            if curr.data in dict_values:
+                prev.next=curr.next
+                curr=None
+            else:
+                dict_values[curr.data]=1
+                prev=curr
+            curr=prev.next
 #Creating a object of a linkedlist class
 #Demo use of function in LinkedList class
 #llist1=LinkedList()
