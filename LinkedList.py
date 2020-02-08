@@ -121,7 +121,7 @@ class LinkedList:
         if not q:
             s.next=p
         return start
-   def removeDuplicateNodeInList(self):
+    def removeDuplicateNodeInList(self):
         curr=self.head
         prev=None
         dict_values=dict()
@@ -133,20 +133,63 @@ class LinkedList:
                 dict_values[curr.data]=1
                 prev=curr
             curr=prev.next
+    def removeNthNodeFromLast(self,loc):
+        curr=self.head
+        length=self.length_llist_iter()
+        prev=None
+        while curr :
+            if length-loc==0:
+                prev.next=curr.next
+                curr=None
+                return
+            else:
+                length-=1
+                prev=curr
+                curr=prev.next
+        if not curr:
+            print("Node out of bound or not found")
+            return
+    def countOccurancesIterative(self,data):
+        curr=self.head
+        count=0
+        while curr:
+            if curr.data==data:
+                count+=1
+            curr=curr.next
+        return count
+    def countOccurancesRecursive(self,node,data):
+        if not node:
+            return 0
+        if node.data==data:
+            return 1+ self.countOccurancesRecursive(node.next,data)
+        else:
+            return self.countOccurancesRecursive(node.next,data)
+    def rotateSinglyLinkedList(self,rot_no):
+        
+        
+        
+            
+        
 #Creating a object of a linkedlist class
 #Demo use of function in LinkedList class
-#llist1=LinkedList()
+llist1=LinkedList()
 #llist2=LinkedList()
-#llist1.append(1)
-#llist1.append(5)
-#llist1.append(7)
-#llist1.append(9)
-#llist1.append(10)
-#llist2.append(2)
+llist1.append(1)
+llist1.append(2)
+llist1.append(3)
+llist1.append(4)
+llist1.append(4)
+
 #llist2.append(3)
 #llist2.append(4)
 #llist2.append(6)
 #llist2.append(8)
-#llist1.print_linkedlist()#Creating a New Node
+llist1.print_linkedlist()#Creating a New Node
+llist1.rotateSinglyLinkedList(2)
+llist1.print_linkedlist()
+#llist1.removeNthNodeFromLast(2)
+#llist1.print_linkedlist()
+#print(llist1.countOccurancesIterative(4))
+#print(llist1.countOccurancesRecursive(llist1.head,4))
 #llist2.print_linkedlist()#Creating a New Node
 #llist1.mergeTwoSortedLinkedLists(llist2)
