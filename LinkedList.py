@@ -327,20 +327,3 @@ class CircularLinkedList:
         self.print_linkedlist()
         print("Second half")
         split_clist.print_linkedlist()
-#Creating a object of a linkedlist class
-#Demo use of function in LinkedList class
-# llist1=LinkedList()
-# llist2=LinkedList()
-# llist1.append(4)
-# llist1.append(5)
-# llist1.append(6)
-# llist2.append(6)
-# llist2.append(5)
-# llist2.append(4)
-# llist1.sumTwoLinkedLists(llist2)
-#llist1.removeNthNodeFromLast(2)
-#llist1.print_linkedlist()
-#print(llist1.countOccurancesIterative(4))
-#print(llist1.countOccurancesRecursive(llist1.head,4))
-#llist2.print_linkedlist()#Creating a New Node
-#llist1.mergeTwoSortedLinkedLists(llist2)
