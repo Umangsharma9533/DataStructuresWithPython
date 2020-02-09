@@ -165,11 +165,22 @@ class LinkedList:
         else:
             return self.countOccurancesRecursive(node.next,data)
     def rotateSinglyLinkedList(self,rot_no):
-        
-        
-        
-            
-        
+        pt1=self.head
+        pt2=self.head
+        length=self.length_llist_iter()
+        while pt1 and length-rot_no>0:
+            prev=pt1
+            pt1=pt1.next
+            pt2=pt2.next
+            length-=1
+        pt1=prev
+        while pt2:
+            prev=pt2
+            pt2=pt2.next
+        pt2=prev
+        pt2.next=self.head
+        self.head=pt1.next
+        pt1.next=None
 #Creating a object of a linkedlist class
 #Demo use of function in LinkedList class
 llist1=LinkedList()
@@ -179,7 +190,8 @@ llist1.append(2)
 llist1.append(3)
 llist1.append(4)
 llist1.append(4)
-
+llist1.append(5)
+llist1.append(6)
 #llist2.append(3)
 #llist2.append(4)
 #llist2.append(6)
