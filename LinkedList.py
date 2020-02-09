@@ -1,3 +1,4 @@
+
 #Creating a New Node
 class Node:
     def __init__(self,data):
@@ -181,23 +182,43 @@ class LinkedList:
         pt2.next=self.head
         self.head=pt1.next
         pt1.next=None
+    def isPalindrome(self):
+        string=""
+        ptr=self.head
+        while ptr:
+            string+=ptr.data
+            ptr=ptr.next
+# Check whether reverse and actual of string is same
+        return string==string[::-1]
+    def moveTailToHead(self):
+        ptr=self.head
+        prev=None
+        while ptr.next:
+            prev=ptr
+            ptr=ptr.next
+        ptr.next=self.head
+        self.head=ptr
+        prev.next=None
+    def sumTwoLinkedLists(Self,llist):
+        pass
 #Creating a object of a linkedlist class
 #Demo use of function in LinkedList class
 llist1=LinkedList()
 #llist2=LinkedList()
-llist1.append(1)
-llist1.append(2)
-llist1.append(3)
-llist1.append(4)
-llist1.append(4)
-llist1.append(5)
-llist1.append(6)
+llist1.append("1")
+llist1.append("B")
+llist1.append("C")
+llist1.append("D")
+llist1.append("C")
+llist1.append("B")
+llist1.append("1")
 #llist2.append(3)
 #llist2.append(4)
 #llist2.append(6)
 #llist2.append(8)
 llist1.print_linkedlist()#Creating a New Node
-llist1.rotateSinglyLinkedList(2)
+print(llist1.isPalindrome())
+llist1.moveTailToHead()
 llist1.print_linkedlist()
 #llist1.removeNthNodeFromLast(2)
 #llist1.print_linkedlist()
