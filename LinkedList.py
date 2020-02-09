@@ -22,6 +22,12 @@ class LinkedList:
             print("->",end=" ")
             curr_node=curr_node.next
         print("NULL_PTR")
+    def print_num(self):
+        curr_node=self.head
+        while curr_node:
+            print(curr_node.data,end="")
+            curr_node=curr_node.next
+        print()
     def prepend(self,data):
         new_node=Node(data)
         curr=self.head
@@ -199,27 +205,46 @@ class LinkedList:
         ptr.next=self.head
         self.head=ptr
         prev.next=None
-    def sumTwoLinkedLists(Self,llist):
-        pass
+    def sumTwoLinkedLists(self,llist):
+        p=self.head
+        q=llist.head
+        final_List=LinkedList()
+        carry=0
+        while p or q:
+            if not p:
+                i=0
+            else:
+                i=p.data
+            if not q:
+                j=0
+            else:
+                j=q.data
+            s=i+j+carry
+            if s>=10:
+                remainder=s%10
+                carry=1
+                final_List.prepend(remainder)
+            else:
+                carry=0
+                final_List.prepend(s)
+            if p:
+                p=p.next
+            if q:
+                q=q.next
+        if carry==1:
+            final_List.prepend(carry)
+        final_List.print_num()
 #Creating a object of a linkedlist class
 #Demo use of function in LinkedList class
 llist1=LinkedList()
-#llist2=LinkedList()
-llist1.append("1")
-llist1.append("B")
-llist1.append("C")
-llist1.append("D")
-llist1.append("C")
-llist1.append("B")
-llist1.append("1")
-#llist2.append(3)
-#llist2.append(4)
-#llist2.append(6)
-#llist2.append(8)
-llist1.print_linkedlist()#Creating a New Node
-print(llist1.isPalindrome())
-llist1.moveTailToHead()
-llist1.print_linkedlist()
+llist2=LinkedList()
+llist1.append(4)
+llist1.append(5)
+llist1.append(6)
+llist2.append(6)
+llist2.append(5)
+llist2.append(4)
+llist1.sumTwoLinkedLists(llist2)
 #llist1.removeNthNodeFromLast(2)
 #llist1.print_linkedlist()
 #print(llist1.countOccurancesIterative(4))
