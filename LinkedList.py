@@ -234,17 +234,55 @@ class LinkedList:
         if carry==1:
             final_List.prepend(carry)
         final_List.print_num()
+        
+class CircularLinkedList:
+    def __init__(self):
+        self.head=None
+    def print_linkedlist(self):
+        curr_node=self.head
+        while curr_node.next!=self.head:
+            print(curr_node.data,end=" ")
+            print("->",end=" ")
+            curr_node=curr_node.next
+        print(curr_node.data,end=" ")
+        print("NULL_PTR")
+    def prepend(self,data):
+        pass
+    def append(self,data):
+        if not self.head:
+            self.head=Node(data)
+            self.head.next=self.head
+        else:
+            curr=self.head
+            new_node=Node(data)
+            while curr.next!=self.head:
+                curr=curr.next
+            curr.next=new_node
+            new_node.next=self.head
+    def insertAfterNode(self,data,loc):
+        if not self.head:
+            self.head=Node(data)
+            self.head.next=self.head
+        else:
+            curr=self.head
+            new_node=Node(data)
+            while loc>0:
+                prev=curr
+                curr=curr.next
+                loc-=1
+            prev.next=new_node
+            new_node.next=curr
 #Creating a object of a linkedlist class
 #Demo use of function in LinkedList class
-llist1=LinkedList()
-llist2=LinkedList()
-llist1.append(4)
-llist1.append(5)
-llist1.append(6)
-llist2.append(6)
-llist2.append(5)
-llist2.append(4)
-llist1.sumTwoLinkedLists(llist2)
+# llist1=LinkedList()
+# llist2=LinkedList()
+# llist1.append(4)
+# llist1.append(5)
+# llist1.append(6)
+# llist2.append(6)
+# llist2.append(5)
+# llist2.append(4)
+# llist1.sumTwoLinkedLists(llist2)
 #llist1.removeNthNodeFromLast(2)
 #llist1.print_linkedlist()
 #print(llist1.countOccurancesIterative(4))
