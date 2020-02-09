@@ -247,7 +247,16 @@ class CircularLinkedList:
         print(curr_node.data,end=" ")
         print("NULL_PTR")
     def prepend(self,data):
-        pass
+        new_node=Node(data)
+        curr=self.head
+        new_node.next=self.head
+        if not self.head:
+            new_node.next=new_node
+        else:
+            while curr.next!=self.head:
+                curr=curr.next
+            curr.next=new_node
+            self.head=new_node
     def append(self,data):
         if not self.head:
             self.head=Node(data)
@@ -272,6 +281,53 @@ class CircularLinkedList:
                 loc-=1
             prev.next=new_node
             new_node.next=curr
+    def removeNode(self,loc):
+        if loc==1:
+            cur=self.head
+            while cur.next!=self.head:
+                cur=cur.next
+            cur.next=self.head.next
+            self.head=cur.next
+        else:
+            curr=self.head
+            while loc>1:
+                prev=curr
+                curr=curr.next
+                loc-=1
+            prev.next=curr.next
+    def lengthCLinkedList(self):
+        curr=self.head
+        count=0
+        while curr:
+            count+=1
+            curr=curr.next
+            if curr==self.head:
+                break
+        return count
+    def splitCLinkedList(self):
+        length=self.lengthCLinkedList()
+        if length==0:
+            return None
+        if length==1:
+            return self.head
+        mid=length/2
+        count=0
+        prev=None
+        curr=self.head
+        while curr and count<mid:
+            count+=1
+            prev=curr
+            curr=curr.next
+        prev.next=self.head
+        split_clist=CircularLinkedList()
+        while curr.next!=self.head:
+            split_clist.append(curr.data)
+            curr=curr.next
+        split_clist.append(curr.data)
+        print("First half")
+        self.print_linkedlist()
+        print("Second half")
+        split_clist.print_linkedlist()
 #Creating a object of a linkedlist class
 #Demo use of function in LinkedList class
 # llist1=LinkedList()
