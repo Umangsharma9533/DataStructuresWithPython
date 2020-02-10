@@ -332,7 +332,7 @@ class CircularLinkedList:
         self.print_linkedlist()
         print("Second half")
         split_clist.print_linkedlist()
-    class DB_LinkedList:
+class DB_LinkedList:
     def __init__(self):
         self.head=None
     def print_linkedList(self):
