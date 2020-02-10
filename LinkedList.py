@@ -3,6 +3,11 @@ class Node:
     def __init__(self,data):
         self.data=data
         self.next=None
+class DB_Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+        self.prev=None    
 #Creating a Linkedlist
 #Class contain 5 Functions:
 #__init__(): It acts a constructor , initialize a head for a linkedlist
@@ -327,3 +332,48 @@ class CircularLinkedList:
         self.print_linkedlist()
         print("Second half")
         split_clist.print_linkedlist()
+    class DB_LinkedList:
+    def __init__(self):
+        self.head=None
+    def print_linkedList(self):
+        curr=self.head
+        while curr:
+            print(curr.data,end="")
+            print("->",end=" ")
+            curr=curr.next
+        print("NULL")
+    def append(self,data):
+        if not self.head:
+            self.head=DB_Node(data)
+        else:
+            curr=self.head
+            while curr.next:
+                curr=curr.next
+            new_node=DB_Node(data)
+            curr.next=new_node
+            new_node.prev=curr
+            new_node.next=None
+    def insertAfterNode(self,key,data):
+        if not self.head:
+            self.head=DB_Node(data)
+        else:
+            curr=self.head
+            while curr.data!=key:
+                curr=curr.next
+            new_node=DB_Node(data)
+            new_node.next=curr.next
+            curr.next=new_node
+            new_node.prev=curr
+    def insertBeforeNode(self,key,data):
+        if not self.head:
+            self.head=DB_Node(data)
+        else:
+            curr=self.head
+            while curr.data!=key:
+                curr=curr.next
+            new_node=DB_Node(data)
+            new_node.next=curr
+            curr.prev=new_node
+            new_node.prev=None
+            if self.head.data==curr.data:
+                self.head=new_node
