@@ -377,3 +377,34 @@ class DB_LinkedList:
             new_node.prev=None
             if self.head.data==curr.data:
                 self.head=new_node
+    def delNode(self,key):
+        if self.head.data==key:
+            curr=self.head
+            self.head=curr.next
+            curr.prev=None
+            curr.next=None
+        else:
+            curr=self.head
+            pos=curr.next
+            while  curr.data!=key :
+                pre=curr
+                curr=curr.next
+                pos=curr.next
+            if pos:
+                pre.next=pos
+                pos.prev=pre
+                curr.next=None
+            if not pos:
+                pre.next=None
+                curr.next=None
+    def removeDuplicates(self):
+        dict_val=dict()
+        curr=self.head
+        while curr:
+            if curr.data not in dict_val:
+                dict_val[curr.data]=1
+                curr=curr.next
+            else:
+                nxt=curr.next
+                self.delNode(curr.data)
+                curr=nxt
